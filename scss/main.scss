@@ -1,0 +1,19 @@
+// 1. YOUR variables first, so Bootstrap uses them
+@import "variables";
+
+// 2. Then all of Bootstrap
+@import "bootstrap/scss/bootstrap";
+
+// 3. Then your own styles
+@import "base";
+@import "components/navbar";
+@import "components/footer";
+@import "components/product-card";
+@import "components/badges";
+@import "components/map";
+@import "components/stepper";
+@import "components/keeper-sidebar";
+@import "pages/home";
+@import "pages/product";
+@import "pages/dashboard";
+@import "pages/qr-label";

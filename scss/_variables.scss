@@ -1,0 +1,17 @@
+//hive Market brand colors
+$amber: #E0A030;
+$cream: #FBF6EA;
+$sage:  #8A9A7B;
+
+//override Bootstrap's defaults
+$primary:   $amber;
+$secondary: $sage;
+$light:     $cream;
+$body-bg:   $cream;
+
+//fonts: serif headlines, clean sans body
+$font-family-sans-serif: "Inter", system-ui, sans-serif;
+$headings-font-family:   "Lora", Georgia, serif;
+
+//softer corners
+$border-radius: .5rem;
