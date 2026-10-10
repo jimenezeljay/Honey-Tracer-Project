@@ -10,7 +10,10 @@
     align-items: center;
     gap: .5rem;
 
-    .bi { color: $amber; }
+    .brand-logo {
+      height: 2rem;
+      width: auto;
+    }
   }
 
   .nav-link {
