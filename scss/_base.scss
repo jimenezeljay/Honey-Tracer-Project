@@ -1,0 +1,77 @@
+// Base styles shared by every page.
+// Copy rule from the 10/2 customer meeting: no more than 22 words of reading copy per screen.
+
+$ink: #2A2117;       // body text
+$ink-soft: #6A5A45;  // secondary text
+$amber-deep: #8F5508; // amber for text on cream (readable contrast)
+$line: #E6DAC0;      // hairlines and card borders
+
+body {
+  color: $ink;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+a {
+  color: $amber-deep;
+}
+
+.text-soft {
+  color: $ink-soft;
+}
+
+// Small uppercase label above a heading
+.eyebrow {
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: $amber-deep;
+}
+
+// Raised panel (sign-in form, choice cards)
+.panel {
+  background: #fff;
+  border: 1px solid $line;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+// Get started: the two path cards
+.choice-card {
+  @extend .panel;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+
+  h2 { font-size: 1.75rem; margin: 0; }
+  p { color: $ink-soft; margin: 0; flex: 1; }
+  .btn { align-self: flex-start; }
+}
+
+.choice-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: .75rem;
+  background: rgba($sage, .2);
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+}
+
+// No data found / error pages: short, bee-pun tone
+.empty-state {
+  text-align: center;
+  padding-block: 5rem;
+
+  h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); }
+  .lead { color: $ink-soft; max-width: 32ch; margin-inline: auto; }
+  .empty-icon { font-size: 4rem; color: $amber; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

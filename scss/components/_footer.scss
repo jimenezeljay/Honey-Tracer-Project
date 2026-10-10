@@ -1,0 +1,12 @@
+.site-footer {
+  border-top: 1px solid $line;
+  color: $ink-soft;
+  font-size: .9rem;
+
+  a {
+    color: $ink-soft;
+    text-decoration: none;
+
+    &:hover { color: $ink; text-decoration: underline; }
+  }
+}
