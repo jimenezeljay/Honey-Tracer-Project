@@ -43,14 +43,27 @@
   <main class="container empty-state">
     <i class="bi bi-question-diamond empty-icon d-block mb-3" aria-hidden="true"></i>
     <p class="eyebrow mb-2" id="searchedName" hidden></p>
-    <h1 class="mb-3">Well, that's un-bee-lievable.</h1>
-    <p class="lead mb-4">We don't have the scoop on this honey yet.</p>
+    <h1 class="mb-3" id="punTitle">Well, that's un-bee-lievable.</h1>
+    <p class="lead mb-4" id="punLead">We don't have the scoop on this honey yet.</p>
     <div class="d-flex flex-wrap gap-2 justify-content-center">
       <a class="btn btn-primary" href="marketplace.html">Browse certified honey</a>
       <a class="btn btn-outline-secondary" href="map.html">Explore the map</a>
     </div>
   </main>
   <script>
+    // Pick a random bee pun each visit. The HTML above is the fallback.
+    const puns = [
+      ["Well, that's un-bee-lievable.", "We don't have the scoop on this honey yet."],
+      ["Buzz kill.", "This honey hasn't joined the hive yet."],
+      ["We're stumped, honey.", "No trace of this one in our records yet."],
+      ["Bee right back?", "We're still waiting on this keeper's buzz."],
+      ["Comb up empty.", "We couldn't trace this honey yet."],
+      ["Mind your own beeswax?", "This brand hasn't shared its story with us yet."]
+    ];
+    const [title, lead] = puns[Math.floor(Math.random() * puns.length)];
+    document.getElementById('punTitle').textContent = title;
+    document.getElementById('punLead').textContent = lead;
+
     // Show what the person searched for, e.g. "Big Name Honey?"
     const q = new URLSearchParams(location.search).get('q');
     if (q) {
