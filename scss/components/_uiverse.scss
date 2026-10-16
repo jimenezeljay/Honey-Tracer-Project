@@ -1,0 +1,18 @@
+// Components adapted from uiverse.io (MIT licensed).
+//
+// How to add one:
+//   1. On uiverse.io, pick a component and choose the CSS tab (not Tailwind).
+//   2. Paste the CSS below, under a comment with its name, author and link.
+//   3. Rename its classes with a "uv-" prefix (.button -> .uv-button) so they
+//      can't clash with Bootstrap's classes (.btn, .card, .switch, ...).
+//   4. Swap hard-coded colors for our tokens: $amber, $sage, $cream, $ink, $line.
+//   5. Paste its HTML into components.html with the same renamed classes,
+//      so the team can copy it from the style guide.
+//
+// Example layout for an entry:
+//
+// // Shiny pill button, by <author>, https://uiverse.io/<author>/<component-name>
+// .uv-shiny-button {
+//   background: $amber;
+//   ...
+// }

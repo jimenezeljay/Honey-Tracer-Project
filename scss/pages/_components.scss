@@ -1,0 +1,62 @@
+// Style guide page (components.html). Only used by the team, not by shoppers.
+.sg-toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem 1rem;
+  font-weight: 600;
+
+  a { text-decoration: none; }
+}
+
+.sg-section {
+  padding-block: 2.5rem;
+  border-top: 1px solid $line;
+  scroll-margin-top: 1rem;
+
+  > h2 { margin-bottom: .25rem; }
+  > p { color: $ink-soft; margin-bottom: 1.25rem; }
+}
+
+.sg-example {
+  border: 1px solid $line;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  background: #fff;
+}
+
+.sg-label {
+  padding: .6rem 1rem;
+  font-size: .85rem;
+  font-weight: 600;
+  color: $ink-soft;
+  border-bottom: 1px solid $line;
+}
+
+.sg-preview {
+  padding: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem;
+}
+
+.sg-code {
+  position: relative;
+  background: #2A2117;
+
+  pre {
+    margin: 0;
+    padding: 1rem 1.25rem;
+    max-height: 22rem;
+    overflow: auto;
+    color: #F3E9D6;
+    font-size: .8rem;
+  }
+}
+
+.sg-copy {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+}

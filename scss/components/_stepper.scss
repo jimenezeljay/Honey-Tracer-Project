@@ -1,0 +1,44 @@
+// Numbered steps. Shared by checkout, the add-farm wizard and the keeper pending page.
+// Mark finished steps .is-done and the current one .is-current.
+.stepper {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1.5rem;
+  counter-reset: step;
+
+  li {
+    counter-increment: step;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    color: $ink-soft;
+    font-weight: 600;
+
+    &::before {
+      content: counter(step);
+      width: 1.9rem;
+      height: 1.9rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: .85rem;
+      border: 2px solid $line;
+      background: #fff;
+    }
+
+    &.is-current {
+      color: $ink;
+      &::before { border-color: $amber; background: $amber; color: $ink; }
+    }
+
+    &.is-done::before {
+      content: "\2713"; // check mark
+      border-color: $sage;
+      background: $sage;
+      color: #fff;
+    }
+  }
+}

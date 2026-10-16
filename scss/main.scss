@@ -6,14 +6,18 @@
 
 // 3. Then your own styles
 @import "base";
+@import "components/buttons";
 @import "components/navbar";
 @import "components/footer";
 @import "components/product-card";
 @import "components/badges";
 @import "components/map";
 @import "components/stepper";
+@import "components/quantity";
 @import "components/keeper-sidebar";
+@import "components/uiverse";
 @import "pages/home";
 @import "pages/product";
 @import "pages/dashboard";
 @import "pages/qr-label";
+@import "pages/components";

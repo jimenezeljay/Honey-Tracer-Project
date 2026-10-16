@@ -1,0 +1,64 @@
+// Marketplace / featured honey card. Built in JS with productCard(listing).
+.product-card {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid $line;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: box-shadow .15s ease, transform .15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba($ink, .1);
+  }
+}
+
+.product-card__img {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  object-fit: cover;
+  background: rgba($sage, .2);
+  display: grid;
+  place-items: center;
+  font-size: 2.5rem;
+  color: $sage;
+}
+
+.product-card__body {
+  padding: 1rem 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  flex: 1;
+}
+
+.product-card__title {
+  font-size: 1.15rem;
+  margin: 0;
+
+  a { color: $ink; text-decoration: none; }
+}
+
+.product-card__meta {
+  color: $ink-soft;
+  margin: 0;
+  font-size: .95rem;
+}
+
+.product-card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+}
+
+// Sits above the stretched title link so it stays clickable on its own
+.product-card__map {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  font-size: .9rem;
+  font-weight: 600;
+}

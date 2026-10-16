@@ -1,0 +1,17 @@
+// Quantity selector (product page, cart). The − / + buttons are wired up in js/components.js.
+.qty-stepper {
+  width: 8.5rem;
+
+  input {
+    text-align: center;
+    // Hide the browser's own up/down arrows so there's one set of controls
+    -moz-appearance: textfield; // Firefox
+    appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button { // (Chrome, Edge, Safari)
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+}

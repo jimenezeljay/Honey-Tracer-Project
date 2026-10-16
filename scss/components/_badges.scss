@@ -1,0 +1,25 @@
+// Trust badges shown on product cards, the trace page and the dashboard.
+// Use with Bootstrap's .badge: <span class="badge badge-certified">...</span>
+// or build them in JS with badge("certified") from js/components.js.
+
+.badge {
+  font-weight: 600;
+  letter-spacing: .01em;
+  border-radius: 999px;
+  padding: .4em .75em;
+  display: inline-flex;
+  align-items: center;
+  gap: .3em;
+}
+
+.badge-certified          { background: $amber;            color: $ink; }
+.badge-raw                { background: rgba($sage, .25);  color: $ink; }
+.badge-pure               { background: rgba($sage, .25);  color: $ink; }
+.badge-creamed            { background: #F3E3C3;           color: $ink; }
+.badge-single-hive        { background: #fff;              color: $ink; border: 1px solid $line; }
+.badge-volunteer-verified { background: #4A5440;          color: #fff; } // dark sage, so white text stays readable
+
+// Account / application status pills
+.badge-status-pending   { background: #F3E3C3;          color: $amber-deep; }
+.badge-status-approved  { background: rgba($sage, .25); color: #4A5440; }
+.badge-status-suspended { background: #F6D9D4;          color: #8A2A1B; }
