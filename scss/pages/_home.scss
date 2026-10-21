@@ -1,4 +1,7 @@
 // Home: mission line, one call to action, then the map.
+// Two layouts for the customer to compare, set by data-layout on .home-hero:
+//   a = map beside the headline (current build)
+//   b = keeper photo beside the headline, wider map below (original wireframe)
 .home-hero {
   padding-block: 4.5rem 2.5rem;
 
@@ -10,5 +13,70 @@
   .lead {
     color: $ink-soft;
     max-width: 32ch;
+  }
+}
+
+.home-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "copy"
+    "photo"
+    "map";
+  align-items: center;
+}
+
+.home-copy  { grid-area: copy; }
+.home-photo { grid-area: photo; margin: 0; }
+.home-map   { grid-area: map; }
+
+.home-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 40%;
+  border-radius: 1rem;
+  border: 1px solid $line;
+}
+
+// Layout A: no photo
+.home-hero[data-layout="a"] .home-photo { display: none; }
+
+@include media-breakpoint-up(lg) {
+  .home-grid { gap: 3rem; }
+
+  .home-hero[data-layout="a"] .home-grid {
+    grid-template-columns: 5fr 7fr;
+    grid-template-areas: "copy map";
+  }
+
+  .home-hero[data-layout="b"] .home-grid {
+    grid-template-columns: 5fr 7fr;
+    grid-template-areas:
+      "copy photo"
+      "map  map";
+  }
+
+  .home-hero[data-layout="b"] .map-box { min-height: 460px; }
+}
+
+// Temporary A/B switch for the customer review
+.layout-switch {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1030;
+  background: #fff;
+  border-radius: $border-radius;
+  box-shadow: 0 2px 10px rgba($ink, .15);
+
+  .btn { font-weight: 600; }
+  .btn[aria-pressed="true"] {
+    background: $amber;
+    border-color: $amber;
+    color: $ink;
   }
 }

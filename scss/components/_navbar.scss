@@ -16,13 +16,45 @@
     }
   }
 
+  // Page links: an amber underline grows from the center out to the word's width on hover.
   .nav-link {
+    position: relative;
+    display: inline-block;
     color: $ink-soft;
     font-weight: 600;
 
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: .3rem;
+      height: 2px;
+      border-radius: 1px;
+      background: $amber;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform .25s ease;
+    }
+
     &:hover,
+    &:focus-visible,
     &.active { color: $ink; }
 
-    &.active { box-shadow: inset 0 -2px 0 $amber; }
+    &:hover::after,
+    &:focus-visible::after,
+    &.active::after { transform: scaleX(1); }
+  }
+
+  // Desktop links have side padding; keep the underline to the word only.
+  @include media-breakpoint-up(lg) {
+    .nav-link::after {
+      left: var(--bs-navbar-nav-link-padding-x);
+      right: var(--bs-navbar-nav-link-padding-x);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-link::after { transition: none; }
   }
 }
