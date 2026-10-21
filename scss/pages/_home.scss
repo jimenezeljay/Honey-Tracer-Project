@@ -30,17 +30,13 @@
 .home-copy  { grid-area: copy; }
 .home-photo { grid-area: photo; margin: 0; position: relative; }
 
-// Disclosure on the AI-generated keeper photo
-.home-photo .ai-label {
-  position: absolute;
-  left: .75rem;
-  bottom: .75rem;
-  padding: .2rem .55rem;
+// Photo credit (Unsplash)
+.home-photo .photo-credit {
+  margin-top: .4rem;
   font-size: .75rem;
-  font-weight: 600;
-  color: #fff;
-  background: rgba($ink, .72);
-  border-radius: $border-radius;
+  color: $ink-soft;
+
+  a { color: inherit; }
 }
 .home-map   { grid-area: map; }
 
@@ -50,7 +46,7 @@
   height: auto;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  object-position: center 40%;
+  object-position: center;
   border-radius: 1rem;
   border: 1px solid $line;
 }
