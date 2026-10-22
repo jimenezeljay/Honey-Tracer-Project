@@ -10,10 +10,43 @@
     align-items: center;
     gap: .5rem;
 
+    // Bee logo hover. Two numbers drive everything so it eases both up AND back down:
+    //   --hov: 0 at rest, 1 while hovered (transitions smoothly either way)
+    //   --bob: 0 to 1 and back, looping; only shows when --hov is above 0
+    // The bee and its shadow both read these, so the shadow shrinks as the bee rises.
+    .brand-mark {
+      position: relative;
+      display: inline-block;
+      --hov: 0;
+      transition: --hov .45s ease;
+      animation: bee-bob 1.6s ease-in-out infinite;
+
+      // Ground shadow under the bee
+      &::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -.35rem;
+        width: 1.4rem;
+        height: .3rem;
+        margin-left: -.7rem;
+        border-radius: 50%;
+        background: rgba($ink, .35);
+        filter: blur(1.5px);
+        opacity: calc(var(--hov) * (1 - .3 * var(--bob)));
+        transform: scaleX(calc(.6 + .4 * var(--hov) - .2 * var(--hov) * var(--bob)));
+      }
+    }
+
     .brand-logo {
+      display: block;
       height: 2rem;
       width: auto;
+      transform: translateY(calc(var(--hov) * (-5px - 3px * var(--bob))));
     }
+
+    &:hover .brand-mark,
+    &:focus-visible .brand-mark { --hov: 1; }
   }
 
   // Page links: an amber underline grows from the center out to the word's width on hover.
@@ -56,5 +89,27 @@
 
   @media (prefers-reduced-motion: reduce) {
     .nav-link::after { transition: none; }
+
+    // Keep the lift and shadow, skip the bobbing.
+    .navbar-brand .brand-mark { animation: none; }
   }
 }
+
+// Registered so the browser can animate them smoothly (plain custom properties would jump)
+@property --hov {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --bob {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@keyframes bee-bob {
+  0%, 100% { --bob: 0; }
+  50%      { --bob: 1; }
+}
+

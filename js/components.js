@@ -61,7 +61,7 @@ function siteNav(active) {
   return `
     <nav class="navbar navbar-expand-lg site-nav">
       <div class="container">
-        <a class="navbar-brand" href="index.html"><img src="images/honey-tracker-logo.png" alt="" class="brand-logo"> Honey Tracker</a>
+        <a class="navbar-brand" href="index.html"><span class="brand-mark"><img src="images/honey-tracker-logo.png" alt="" class="brand-logo"></span> Honey Tracker</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Open menu">
           <span class="navbar-toggler-icon"></span>
         </button>
