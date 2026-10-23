@@ -36,6 +36,14 @@ $verified-light: #C9D6B8;   // icon on the dark sage fill
   flex: none;
 }
 
+// Icon-only badge (product cards): a round chip in the badge's colors
+.badge--icon {
+  padding: .4em;
+  border-radius: 50%;
+
+  .badge-icon { width: 1.25em; height: 1.25em; }
+}
+
 .badge-certified {
   background: $amber;
   color: $ink;

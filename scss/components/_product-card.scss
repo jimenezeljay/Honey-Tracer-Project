@@ -52,6 +52,10 @@
   display: flex;
   flex-wrap: wrap;
   gap: .35rem;
+  // Above the stretched title link, so hovering a badge shows its name
+  position: relative;
+  z-index: 2;
+  align-self: flex-start;
 }
 
 // Sits above the stretched title link so it stays clickable on its own

@@ -51,6 +51,14 @@ function badge(key) {
   return `<span class="badge badge-${key}">${icon(b.icon, 'badge-icon')}${b.label}</span>`;
 }
 
+// badgeIcon('raw') -> just the icon in the badge's colors, for tight spaces like product cards.
+// The name is still there for screen readers, and shows as a tooltip on hover.
+function badgeIcon(key) {
+  const b = BADGES[key];
+  if (!b) return '';
+  return `<span class="badge badge-${key} badge--icon" title="${b.label}">${icon(b.icon, 'badge-icon')}<span class="visually-hidden">${b.label}</span></span>`;
+}
+
 // productCard({ id, title, farmName, price, photo, badges: ['certified', 'raw'] })
 function productCard(listing) {
   const photo = listing.photo
@@ -66,7 +74,7 @@ function productCard(listing) {
           <a class="stretched-link" href="product.html?id=${encodeURIComponent(listing.id)}">${escapeHtml(listing.title)}</a>
         </h3>
         <p class="product-card__meta">${escapeHtml(listing.farmName)} &middot; $${price}</p>
-        <div class="product-card__badges">${(listing.badges || []).map(badge).join('')}</div>
+        <div class="product-card__badges">${(listing.badges || []).map(badgeIcon).join('')}</div>
         <a class="product-card__map" href="map.html?farm=${encodeURIComponent(listing.farmId ?? '')}">View on map</a>
       </div>
     </article>`;
