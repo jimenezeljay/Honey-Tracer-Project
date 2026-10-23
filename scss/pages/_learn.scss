@@ -1,0 +1,188 @@
+// Learn (wireframe 9): side tabs, label tiles, definition panel, purity stat, source cards.
+// Badge colors come from components/_badges.scss.
+
+$crystal-gold: #B07A12;  // Crystallized icon
+$liquid-gold:  #C98A12;  // Liquid icon
+
+.learn {
+  padding-block: 2.5rem 1rem;
+}
+
+.learn-title {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  margin-bottom: .25rem;
+}
+
+// ---- Side tabs: a white panel on desktop, a scrollable row of pills on smaller screens ----
+.learn-tabs {
+  .nav {
+    gap: .4rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: .25rem; // room for the scrollbar on touch devices
+  }
+
+  .nav-link {
+    color: $ink-soft;
+    font-weight: 600;
+    white-space: nowrap;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid $line;
+    padding: .55rem 1rem;
+
+    &:hover { color: $ink; }
+
+    &.active {
+      background: $amber;
+      border-color: $amber;
+      color: $ink;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    position: sticky;
+    top: 1.5rem;
+    background: #fff;
+    border: 1px solid $line;
+    border-radius: 1rem;
+    padding: .75rem;
+
+    .nav { overflow: visible; padding-bottom: 0; }
+
+    .nav-link {
+      text-align: left;
+      border: 0;
+      border-radius: .6rem;
+      padding: .7rem .95rem;
+    }
+  }
+}
+
+// ---- Label tiles ----
+.term-tile {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .55rem;
+  padding: 1.15rem .75rem;
+  background: #fff;
+  border: 1px solid $line;
+  border-radius: 1rem;
+  color: $ink;
+  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+
+  &:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba($ink, .08); }
+
+  &:focus-visible { outline: 0; box-shadow: 0 0 0 3px rgba($amber, .45); }
+
+  &[aria-pressed="true"] {
+    border-color: $amber;
+    box-shadow: 0 0 0 3px rgba($amber, .25);
+  }
+}
+
+.term-tile__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.term-tile__label {
+  font-family: $headings-font-family;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+// Each tile's icon in its badge color
+.term-certified          .term-tile__icon { color: $amber-deep; }
+.term-volunteer-verified .term-tile__icon { color: $verified; }
+.term-single-hive        .term-tile__icon { color: $hive-deep; }
+.term-raw                .term-tile__icon { color: $raw-deep; }
+.term-pure               .term-tile__icon { color: $pure-gold; }
+.term-creamed            .term-tile__icon { color: $creamed-deep; }
+.term-crystallized       .term-tile__icon { color: $crystal-gold; }
+.term-liquid             .term-tile__icon { color: $liquid-gold; }
+
+// ---- Definition panel under the tiles (hidden until a tile is picked) ----
+.term-detail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem 1rem;
+  background: #fff;
+  border: 1px solid $line;
+  border-radius: 1rem;
+  padding: 1.1rem 1.4rem;
+
+  p { margin: 0; font-size: 1.05rem; }
+
+  &.is-empty { display: none; }
+}
+
+// Crystallized and Liquid aren't site badges, so their pill is plain white
+.badge-term {
+  background: #fff;
+  color: $ink;
+  border-color: $line;
+
+  &.term-crystallized .badge-icon { color: $crystal-gold; }
+  &.term-liquid       .badge-icon { color: $liquid-gold; }
+}
+
+// ---- Why purity matters ----
+.purity-stat {
+  background: #fff;
+  border: 1px solid $line;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.purity-stat__value {
+  font-family: $headings-font-family;
+  font-weight: 700;
+  font-size: clamp(3rem, 8vw, 4rem);
+  line-height: 1;
+  color: $amber-deep;
+}
+
+.purity-stat__text {
+  font-size: 1.25rem;
+  margin: 1rem 0 .5rem;
+  max-width: 48ch;
+}
+
+.purity-stat__source {
+  font-size: .875rem;
+  color: $ink-soft;
+  margin: 0;
+}
+
+// ---- Go deeper cards ----
+.source-card {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  height: 100%;
+  background: #fff;
+  border: 1px solid $line;
+  border-radius: 1rem;
+  padding: 1.1rem 1.25rem;
+  text-decoration: none;
+  transition: box-shadow .15s ease, transform .15s ease;
+
+  &:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba($ink, .08); }
+}
+
+.source-card__title {
+  font-family: $headings-font-family;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: $amber-deep;
+}
+
+.source-card__meta {
+  font-size: .875rem;
+  color: $ink-soft;
+}

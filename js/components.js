@@ -25,7 +25,10 @@ const ICONS = {
   'drop':        '<path d="M12 2.8c-3.6 4.6-6.3 8.3-6.3 11.6a6.3 6.3 0 0 0 12.6 0c0-3.3-2.7-7-6.3-11.6Z"/><path d="M9.2 15.1a3 3 0 0 0 2.3 2.6"/>',
   'jar':         '<path d="M7 3.5h10"/><path d="M8 3.5v2.2C6 6.8 5 8.6 5 11v6.5a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V11c0-2.4-1-4.2-3-5.3V3.5"/><path d="M5.2 12.5c1.4-1.3 2.9-1.3 4.3 0s2.9 1.3 4.3 0 2.9-1.3 4.3 0"/>',
   'hive-box':    '<path d="M2.5 5.5h19v3h-19Z"/><path d="M4 8.5h16v8H4Z"/><path d="M10 12h4"/><path d="M2.5 16.5h19"/><path d="M5.5 16.5v3M18.5 16.5v3"/>',
-  'magnifier-check': '<circle cx="10" cy="10" r="7"/><path d="m15.1 15.1 5.4 5.4"/><path d="m7.2 10.2 2 2 3.8-4"/>'
+  'magnifier-check': '<circle cx="10" cy="10" r="7"/><path d="m15.1 15.1 5.4 5.4"/><path d="m7.2 10.2 2 2 3.8-4"/>',
+  // Learn page only (not badges): Crystallized and Liquid
+  'crystals':    '<path d="M3 21h18"/><path d="M9.8 21V7.8L12 4.2l2.2 3.6V21"/><path d="M9.8 7.8 12 9.2l2.2-1.4M12 9.2V21"/><path d="M5.4 21 2.9 11.9 4 9.5l2.1 1.6L8.6 21"/><path d="M2.9 11.9l3.2-.8"/><path d="M18.6 21l2.5-9.1L20 9.5l-2.1 1.6L15.4 21"/><path d="M21.1 11.9l-3.2-.8"/>',
+  'waves':       '<path d="M3 7.5c2-1.6 4-1.6 6 0s4 1.6 6 0 4-1.6 6 0"/><path d="M3 12.5c2-1.6 4-1.6 6 0s4 1.6 6 0 4-1.6 6 0"/><path d="M3 17.5c2-1.6 4-1.6 6 0s4 1.6 6 0 4-1.6 6 0"/>'
 };
 
 function icon(name, className = 'icon') {
