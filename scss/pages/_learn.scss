@@ -159,6 +159,80 @@ $liquid-gold:  #C98A12;  // Liquid icon
   margin: 0;
 }
 
+// "Our process to ensure purity": a toggle that opens the three steps
+.purity-process__toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: #fff;
+  border: 1px solid $line;
+  border-radius: 1rem;
+  padding: 1rem 1.4rem;
+  font-family: $headings-font-family;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: $ink;
+  text-align: left;
+
+  .bi { transition: transform .2s ease; color: $amber-deep; }
+  &:not(.collapsed) .bi { transform: rotate(180deg); }
+  &:focus-visible { outline: 0; box-shadow: 0 0 0 3px rgba($amber, .45); }
+}
+
+.purity-steps {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: grid;
+  gap: 1rem;
+
+  @include media-breakpoint-up(md) { grid-template-columns: repeat(3, 1fr); }
+}
+
+.purity-step {
+  position: relative;
+  background: #fff;
+  border: 1px solid $line;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  text-align: center;
+
+  p { margin: 0; color: $ink-soft; font-size: .95rem; }
+
+  // Arrow to the next step (side by side on md+)
+  @include media-breakpoint-up(md) {
+    &:not(:last-child)::after {
+      content: "\2192";
+      position: absolute;
+      right: -.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $amber-deep;
+      font-weight: 700;
+      z-index: 2;
+    }
+  }
+}
+
+.purity-step__num {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: $amber;
+  color: $ink;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  margin: 0 auto .5rem;
+}
+
+.purity-step__title {
+  font-size: 1.2rem;
+  margin: 0 0 .35rem;
+}
+
 // ---- Go deeper cards ----
 .source-card {
   display: flex;

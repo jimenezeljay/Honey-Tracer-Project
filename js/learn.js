@@ -22,6 +22,14 @@ const LEARN_TERMS = [
   { key: 'liquid',             label: 'Liquid',             icon: 'waves',           text: "Fresh, clear honey that hasn't crystallized yet." }
 ];
 
+// "Our process to ensure purity" steps on the Why purity matters tab (opens on tap,
+// so these can run longer than the 22-word first view)
+const PURITY_STEPS = [
+  { title: 'Bloom', text: "Keepers pin each hive on our map. We note the flowers within the bees' forage range and any spraying nearby." },
+  { title: 'Hive',  text: 'Keepers log every harvest: which hives, when, and how the bees were fed and treated. Volunteers visit to confirm.' },
+  { title: 'Jar',   text: 'Each batch gets its own trace page and QR code, so you can follow your jar back to the hive it came from.' }
+];
+
 (function () {
   const tiles = document.getElementById('termTiles');
   const detail = document.getElementById('termDetail');
@@ -70,6 +78,17 @@ const LEARN_TERMS = [
       <div class="purity-stat__value">${escapeHtml(PURITY_STAT.value)}</div>
       <p class="purity-stat__text">${escapeHtml(PURITY_STAT.text)}</p>
       ${src ? `<p class="purity-stat__source">Source: <a href="${escapeHtml(src.url)}" target="_blank" rel="noopener">${escapeHtml(src.publisher)}, ${escapeHtml(src.date.split(' ').pop())}</a> (${escapeHtml(PURITY_STAT.sourceNote)})</p>` : ''}`;
+  }
+
+  // Process steps
+  const steps = document.getElementById('puritySteps');
+  if (steps) {
+    steps.innerHTML = PURITY_STEPS.map((step, i) => `
+      <li class="purity-step">
+        <span class="purity-step__num" aria-hidden="true">${i + 1}</span>
+        <h3 class="purity-step__title">${escapeHtml(step.title)}</h3>
+        <p>${escapeHtml(step.text)}</p>
+      </li>`).join('');
   }
 
   // Go deeper cards
