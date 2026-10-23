@@ -1,5 +1,5 @@
-// Home (Layout A, chosen by the customer): mission line and one call to action
-// beside the map. Stacks to one column below lg.
+// Home (Layout A, chosen by the customer): headline and call to action
+// on the left, the map on the right. Stacks on phones.
 .home-hero {
   padding-block: 4.5rem 2.5rem;
 
@@ -17,7 +17,6 @@
 .home-grid {
   display: grid;
   gap: 2rem;
-  grid-template-columns: 1fr;
   align-items: center;
 }
 
