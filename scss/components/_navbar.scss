@@ -1,4 +1,14 @@
 // Top bar. Per the refined wireframes: no search here, the map has its own search.
+// The markup comes from siteNav() in js/components.js.
+
+// Hold the navbar's space until components.js swaps the placeholder in,
+// so the page doesn't jump down when it appears. Match the bar's real height (59px).
+[data-component="site-nav"] {
+  min-height: 59px;
+  background: #fff;
+  border-bottom: 1px solid $line;
+}
+
 .site-nav {
   background: #fff;
   border-bottom: 1px solid $line;

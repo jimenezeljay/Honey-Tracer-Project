@@ -1,6 +1,8 @@
 // Reusable UI pieces, written once and used on any page.
-// Load this before a page's own script:
+// Every page loads this file, and it builds the shared navbar and footer, so
+// those are edited HERE only. Put it before Bootstrap and the page's own script:
 //   <script src="js/components.js"></script>
+//   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 //   <script src="js/marketplace.js"></script>
 // See components.html for every component and how to use it.
 
