@@ -17,21 +17,38 @@ function escapeHtml(value) {
     .replace(/'/g, '&#39;');
 }
 
-const BADGES = {
-  'certified':          { label: 'Certified',          icon: 'bi-patch-check-fill' },
-  'raw':                { label: 'Raw',                icon: '' },
-  'pure':               { label: 'Pure',               icon: '' },
-  'creamed':            { label: 'Creamed',            icon: '' },
-  'single-hive':        { label: 'Single-hive',        icon: 'bi-hexagon' },
-  'volunteer-verified': { label: 'Volunteer-Verified', icon: 'bi-person-check-fill' }
+// Hand-drawn line icons (24px grid, 2px round strokes). They use currentColor,
+// so each icon takes the color its CSS gives it. icon('pure') -> <svg>...</svg>
+const ICONS = {
+  'certified':   '<path d="M12 2.8 19.9 7.4v9.2L12 21.2 4.1 16.6V7.4Z"/><path d="m8.4 12.2 2.5 2.5 4.8-5"/>',
+  'comb':        '<path d="M7.7 3.2 11.5 5.4v4.4L7.7 12 3.9 9.8V5.4Z"/><path d="M16.3 3.2 20.1 5.4v4.4L16.3 12 12.5 9.8V5.4Z"/><path d="M12 11.6l3.8 2.2v4.4L12 20.4l-3.8-2.2v-4.4Z"/>',
+  'drop':        '<path d="M12 2.8c-3.6 4.6-6.3 8.3-6.3 11.6a6.3 6.3 0 0 0 12.6 0c0-3.3-2.7-7-6.3-11.6Z"/><path d="M9.2 15.1a3 3 0 0 0 2.3 2.6"/>',
+  'jar':         '<path d="M7 3.5h10"/><path d="M8 3.5v2.2C6 6.8 5 8.6 5 11v6.5a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V11c0-2.4-1-4.2-3-5.3V3.5"/><path d="M5.2 12.5c1.4-1.3 2.9-1.3 4.3 0s2.9 1.3 4.3 0 2.9-1.3 4.3 0"/>',
+  'hive-box':    '<path d="M2.5 5.5h19v3h-19Z"/><path d="M4 8.5h16v8H4Z"/><path d="M10 12h4"/><path d="M2.5 16.5h19"/><path d="M5.5 16.5v3M18.5 16.5v3"/>',
+  'magnifier-check': '<circle cx="10" cy="10" r="7"/><path d="m15.1 15.1 5.4 5.4"/><path d="m7.2 10.2 2 2 3.8-4"/>'
 };
 
-// badge('certified') -> <span class="badge badge-certified">...</span>
+function icon(name, className = 'icon') {
+  if (!ICONS[name]) return '';
+  return `<svg class="${className}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICONS[name]}</svg>`;
+}
+
+// Colors for each badge live in scss/components/_badges.scss
+const BADGES = {
+  'certified':          { label: 'Certified',          icon: 'certified' },
+  'raw':                { label: 'Raw',                icon: 'comb' },
+  'pure':               { label: 'Pure',               icon: 'drop' },
+  'creamed':            { label: 'Creamed',            icon: 'jar' },
+  'single-hive':        { label: 'Single-hive',        icon: 'hive-box' },
+  'volunteer-verified': { label: 'Volunteer-Verified', icon: 'magnifier-check' }
+};
+
+// badge('certified') -> <span class="badge badge-certified"><svg ...></svg>Certified</span>
+// In plain HTML, write <span data-badge="certified"></span> and it's filled in on load.
 function badge(key) {
   const b = BADGES[key];
   if (!b) return '';
-  const icon = b.icon ? `<i class="bi ${b.icon}" aria-hidden="true"></i> ` : '';
-  return `<span class="badge badge-${key}">${icon}${b.label}</span>`;
+  return `<span class="badge badge-${key}">${icon(b.icon, 'badge-icon')}${b.label}</span>`;
 }
 
 // productCard({ id, title, farmName, price, photo, badges: ['certified', 'raw'] })
@@ -117,9 +134,13 @@ document.addEventListener('click', event => {
 // Fill placeholders on the page:
 //   <div data-component="site-nav" data-active="map"></div>
 //   <div data-component="site-footer"></div>
+//   <span data-badge="certified"></span>
 document.querySelectorAll('[data-component="site-nav"]').forEach(el => {
   el.outerHTML = siteNav(el.dataset.active);
 });
 document.querySelectorAll('[data-component="site-footer"]').forEach(el => {
   el.outerHTML = siteFooter();
+});
+document.querySelectorAll('[data-badge]').forEach(el => {
+  el.outerHTML = badge(el.dataset.badge);
 });

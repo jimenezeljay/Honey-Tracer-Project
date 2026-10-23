@@ -116,14 +116,13 @@
 
 // ---- Filter controls in each badge's own colors ----
 // Checked fill + check-mark color per badge (light fills get a dark check, dark fills a white one).
-// Pale badge tints (raw, pure, creamed) use a deeper shade of the same hue so the box still reads.
-// key, checked fill, check-mark color, border
+// key, checked fill, check-mark color, border (colors from components/_badges.scss)
 $badge-checks:
-  "certified"   $amber  $ink $amber,
-  "raw"         $sage   #fff $sage,
-  "pure"        $sage   #fff $sage,
-  "creamed"     #E3C27E $ink #D9B263,
-  "single-hive" #fff    $ink $ink-soft;
+  "certified"   $amber     $ink      $amber,
+  "raw"         $sage      #fff      $sage,
+  "pure"        #fff       $pure-gold $pure-gold,
+  "creamed"     $creamed   $ink      $creamed,
+  "single-hive" $hive-wood #fff      $hive-wood;
 
 @function check-icon($color) {
   @return url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/></svg>");
@@ -148,9 +147,9 @@ $badge-checks:
 // Volunteer-Verified switch matches its dark sage badge
 #verifiedOnly {
   &:checked {
-    background-color: #4A5440;
-    border-color: #4A5440;
+    background-color: $verified;
+    border-color: $verified;
   }
 
-  &:focus { box-shadow: 0 0 0 .2rem rgba(#4A5440, .25); }
+  &:focus { box-shadow: 0 0 0 .2rem rgba($verified, .25); }
 }

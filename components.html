@@ -78,19 +78,28 @@
     <!-- ============ BADGES ============ -->
     <section class="sg-section" id="badges">
       <h2>Badges</h2>
-      <p>Trust labels on cards and trace pages. In JS, <code>badge('certified')</code> returns the same HTML.</p>
+      <p>Trust labels on cards and trace pages, each with its own color and icon. Colors live in <code>scss/components/_badges.scss</code>, icons in <code>js/components.js</code>.</p>
 
       <div class="sg-example">
         <div class="sg-label">Honey badges</div>
         <div class="sg-preview">
-          <span class="badge badge-certified"><i class="bi bi-patch-check-fill" aria-hidden="true"></i> Certified</span>
-          <span class="badge badge-raw">Raw</span>
-          <span class="badge badge-pure">Pure</span>
-          <span class="badge badge-creamed">Creamed</span>
-          <span class="badge badge-single-hive"><i class="bi bi-hexagon" aria-hidden="true"></i> Single-hive</span>
-          <span class="badge badge-volunteer-verified"><i class="bi bi-person-check-fill" aria-hidden="true"></i> Volunteer-Verified</span>
+          <span data-badge="certified"></span>
+          <span data-badge="raw"></span>
+          <span data-badge="pure"></span>
+          <span data-badge="creamed"></span>
+          <span data-badge="single-hive"></span>
+          <span data-badge="volunteer-verified"></span>
         </div>
-        <div class="sg-code"><button class="btn btn-sm btn-light sg-copy" type="button">Copy</button><pre><code></code></pre></div>
+        <div class="sg-code"><button class="btn btn-sm btn-light sg-copy" type="button">Copy</button><pre><code>&lt;!-- In HTML: components.js fills these in, icon included --&gt;
+&lt;span data-badge="certified"&gt;&lt;/span&gt;
+&lt;span data-badge="raw"&gt;&lt;/span&gt;
+&lt;span data-badge="pure"&gt;&lt;/span&gt;
+&lt;span data-badge="creamed"&gt;&lt;/span&gt;
+&lt;span data-badge="single-hive"&gt;&lt;/span&gt;
+&lt;span data-badge="volunteer-verified"&gt;&lt;/span&gt;
+
+// In JS
+badge('certified')</code></pre></div>
       </div>
 
       <div class="sg-example">
