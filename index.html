@@ -18,9 +18,9 @@
 </head>
 <body>
 
+  <!-- Navbar and footer are built by js/components.js (edit them there, once) -->
   <div data-component="site-nav"></div>
 
-  <!-- Layout A (chosen by the customer): headline on the left, map on the right. -->
   <main class="container home-hero">
     <div class="home-grid">
       <div class="home-copy">
@@ -52,10 +52,11 @@
 
   <div data-component="site-footer"></div>
 
+  <!-- Shared navbar + footer first (local file, so they appear without waiting on the CDN) -->
+  <script src="js/components.js"></script>
   <!-- Bootstrap JS (dropdowns, tabs, offcanvas, modals). Goes at the end of body -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Your JS -->
-  <script src="js/components.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

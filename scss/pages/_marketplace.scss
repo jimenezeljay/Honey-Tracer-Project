@@ -1,0 +1,155 @@
+// Marketplace (wireframe 4): title + sort, filter column, card grid.
+
+.market {
+  padding-block: 2.5rem 1rem;
+}
+
+.market-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-bottom: 1rem;
+
+  h1 { font-size: clamp(2rem, 4vw, 2.75rem); }
+}
+
+.market-tools {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+
+.market-sort {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+
+  .form-select { width: auto; }
+}
+
+.market-near {
+  margin-bottom: 1.25rem;
+}
+
+// Filter column: a white panel on desktop, a white slide-in sheet on smaller screens
+.filter-panel {
+  --bs-offcanvas-bg: #fff;
+  --bs-body-bg: #fff; // inputs, selects and checkboxes inside are white too, not cream
+
+  @include media-breakpoint-up(lg) {
+    position: sticky;
+    top: 1.5rem;
+    // Bootstrap's offcanvas-lg forces a see-through background on wide screens; win it back
+    background-color: #fff !important; // stylelint-disable-line declaration-no-important
+    border: 1px solid $line;
+    border-radius: 1rem;
+    padding: 1.25rem;
+  }
+
+  // Bootstrap's offcanvas-lg body has padding meant for the sheet; drop it inline
+  .offcanvas-body {
+    @include media-breakpoint-up(lg) { padding: 0; }
+  }
+}
+
+.filter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.filter-group {
+  .form-label,
+  legend {
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: $ink-soft;
+    margin-bottom: .4rem;
+  }
+
+  legend { float: none; padding: 0; }
+
+  // Badge checkboxes: line the box up with the middle of the pill
+  #badgeChecks .form-check {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding-left: 0;
+    margin-bottom: .4rem;
+
+    .form-check-input { float: none; margin: 0; }
+  }
+
+  .form-check-label .badge { font-size: .8rem; }
+}
+
+.price-range {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: .4rem;
+
+  .input-group-text { padding-inline: .5rem; }
+  .form-control { padding-inline: .5rem; min-width: 0; }
+}
+
+.filter-actions {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+
+  .btn-link { color: $amber-deep; font-weight: 600; }
+
+  @include media-breakpoint-up(lg) {
+    align-items: flex-start;
+    .btn-link { padding-inline: 0; }
+  }
+}
+
+// The no-matches state sits inside the results column, so it needs less room
+#noResults { padding-block: 3rem; }
+
+// ---- Filter controls in each badge's own colors ----
+// Checked fill + check-mark color per badge (light fills get a dark check, dark fills a white one).
+// key, checked fill, check-mark color, border (colors from components/_badges.scss)
+$badge-checks:
+  "certified"   $amber     $ink      $amber,
+  "raw"         $sage      #fff      $sage,
+  "pure"        #fff       $pure-gold $pure-gold,
+  "creamed"     $creamed   $ink      $creamed,
+  "single-hive" $hive-wood #fff      $hive-wood;
+
+@function check-icon($color) {
+  @return url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/></svg>");
+}
+
+#badgeChecks .form-check-input {
+  @each $key, $fill, $mark, $border in $badge-checks {
+    &[value="#{$key}"] {
+      border-color: rgba($border, .6);
+
+      &:checked {
+        background-color: $fill;
+        border-color: $border;
+        --bs-form-check-bg-image: #{escape-svg(check-icon($mark))};
+      }
+
+      &:focus { box-shadow: 0 0 0 .2rem rgba($border, .3); }
+    }
+  }
+}
+
+// Volunteer-Verified switch matches its dark sage badge
+#verifiedOnly {
+  &:checked {
+    background-color: $verified;
+    border-color: $verified;
+  }
+
+  &:focus { box-shadow: 0 0 0 .2rem rgba($verified, .25); }
+}

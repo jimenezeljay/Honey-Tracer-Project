@@ -1,3 +1,15 @@
+// Keep the footer at the bottom of the window, even on short pages:
+// the page is a column at least as tall as the window, and <main> takes up the slack.
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body > main {
+  flex: 1 0 auto;
+}
+
 .site-footer {
   border-top: 1px solid $line;
   color: $ink-soft;
