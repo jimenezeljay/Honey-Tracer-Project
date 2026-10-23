@@ -1,7 +1,7 @@
 // Marketplace (wireframe 4): filter and sort the honey listings.
 // Needs js/components.js (productCard, BADGES) and js/data.js (getListings) loaded first.
 //
-// Filters live in the URL (?type=Clover&state=OH&badges=certified,raw&sort=price)
+// Filters live in the URL (?type=Clover&state=OH&verified=1&badges=certified,raw&sort=price)
 // so a filtered view can be shared or linked to, e.g. from a farm on the map.
 
 (function () {
@@ -11,7 +11,7 @@
 
   const el = {
     type: document.getElementById('typeSelect'),
-    creamed: document.getElementById('creamedOnly'),
+    verified: document.getElementById('verifiedOnly'),
     badgeChecks: document.getElementById('badgeChecks'),
     state: document.getElementById('stateSelect'),
     min: document.getElementById('priceMin'),
@@ -31,8 +31,8 @@
   // Placeholder: Steubenville, OH. Later this could come from a ZIP the shopper enters.
   let origin = { lat: 40.36, lng: -80.63, label: 'Steubenville, OH' };
 
-  // Creamed has its own switch, so it isn't repeated in the badge list.
-  const BADGE_FILTERS = Object.keys(BADGES).filter(key => key !== 'creamed');
+  // Volunteer-Verified has its own switch, so it isn't repeated in the badge list.
+  const BADGE_FILTERS = Object.keys(BADGES).filter(key => key !== 'volunteer-verified');
 
   let listings = [];
 
@@ -70,7 +70,7 @@
     const number = name => (data.get(name) === '' || data.get(name) === null ? null : Number(data.get(name)));
     return {
       type: data.get('type') || '',
-      creamed: data.has('creamed'),
+      verified: data.has('verified'),
       badges: data.getAll('badges'),
       state: data.get('state') || '',
       min: number('min'),
@@ -90,7 +90,7 @@
     setSelect(el.state, params.get('state'));
     setSelect(el.season, params.get('season'));
     setSelect(el.sort, params.get('sort'));
-    el.creamed.checked = params.get('creamed') === '1';
+    el.verified.checked = params.get('verified') === '1';
     el.min.value = params.get('min') || '';
     el.max.value = params.get('max') || '';
     (params.get('badges') || '').split(',').forEach(key => {
@@ -103,7 +103,7 @@
   function writeUrl(f) {
     const params = new URLSearchParams();
     if (f.type) params.set('type', f.type);
-    if (f.creamed) params.set('creamed', '1');
+    if (f.verified) params.set('verified', '1');
     if (f.badges.length) params.set('badges', f.badges.join(','));
     if (f.state) params.set('state', f.state);
     if (f.min !== null) params.set('min', f.min);
@@ -128,7 +128,7 @@
   function matches(listing, f) {
     if (listing.stock <= 0) return false; // sold out listings stay off the marketplace
     if (f.type && listing.honeyType !== f.type) return false;
-    if (f.creamed && !listing.badges.includes('creamed')) return false;
+    if (f.verified && !listing.badges.includes('volunteer-verified')) return false;
     if (f.badges.some(key => !listing.badges.includes(key))) return false; // must have every checked badge
     if (f.state && listing.state !== f.state) return false;
     if (f.min !== null && listing.price < f.min) return false;
@@ -145,7 +145,7 @@
 
   // How many filters are on (sort doesn't count), for the mobile Filters button
   function activeFilterCount(f) {
-    return [f.type, f.creamed, f.state, f.min !== null, f.max !== null, f.season].filter(Boolean).length + f.badges.length;
+    return [f.type, f.verified, f.state, f.min !== null, f.max !== null, f.season].filter(Boolean).length + f.badges.length;
   }
 
   // ---------- Render ----------
