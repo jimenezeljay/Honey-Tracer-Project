@@ -20,10 +20,8 @@
 
   <div data-component="site-nav"></div>
 
-  <!-- Two homepage layouts for the customer to compare (WK8 review).
-       A = map beside the headline (current build). B = photo beside the headline, map below (wireframe).
-       Pick with ?layout=a or ?layout=b, or the switch in the corner. Remove the switch once one is chosen. -->
-  <main class="container home-hero" data-layout="a">
+  <!-- Layout A (chosen by the customer): headline on the left, map on the right. -->
+  <main class="container home-hero">
     <div class="home-grid">
       <div class="home-copy">
         <h1 class="mb-4">Honey you can trust.</h1>
@@ -31,13 +29,6 @@
         <!-- Temporary: points to No data found until search is wired up; switch back to map.html later -->
         <a class="btn btn-primary btn-lg" href="not-found.html">Find your honey</a>
       </div>
-
-      <!-- Layout B only -->
-      <figure class="home-photo">
-        <img src="images/home-beekeeper.jpg" alt="Gloved hand lifting a honeycomb frame covered in bees" width="1400" height="933">
-        <!-- Unsplash License: https://unsplash.com/photos/brown-and-black-bee-on-brown-wooden-stick-ys-sZZkdT1s -->
-        <figcaption class="photo-credit">Photo: <a href="https://unsplash.com/@biancablah" target="_blank" rel="noopener">Bianca Ackermann</a> / Unsplash</figcaption>
-      </figure>
 
       <div class="home-map">
         <!-- Placeholder map until the mapping provider is chosen.
@@ -59,12 +50,6 @@
     </div>
   </main>
 
-  <!-- Temporary layout switch for the customer review -->
-  <div class="layout-switch btn-group btn-group-sm" role="group" aria-label="Homepage layout preview">
-    <button type="button" class="btn btn-light" data-layout-choice="a" aria-pressed="true">Layout A</button>
-    <button type="button" class="btn btn-light" data-layout-choice="b" aria-pressed="false">Layout B</button>
-  </div>
-
   <div data-component="site-footer"></div>
 
   <!-- Bootstrap JS (dropdowns, tabs, offcanvas, modals). Goes at the end of body -->
@@ -72,6 +57,5 @@
   <!-- Your JS -->
   <script src="js/components.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/home-layout.js"></script>
 </body>
 </html>

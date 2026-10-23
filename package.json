@@ -1,7 +1,7 @@
 {
-  "name": "honey-tracer-project",
+  "name": "honey-tracker-project",
   "version": "1.0.0",
-  "description": "Official Honey Tracer Repository for all things U.I. :D",
+  "description": "Official Honey Tracker Repository for all things U.I. :D",
   "main": "script.js",
 "scripts": {
   "build:css": "sass --load-path=node_modules --quiet-deps --silence-deprecation=import --style=compressed scss/main.scss css/main.css",
@@ -9,16 +9,16 @@
 },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jimenezeljay/Honey-Tracer-Project.git"
+    "url": "git+https://github.com/jimenezeljay/Honey-Tracker-Project.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/jimenezeljay/Honey-Tracer-Project/issues"
+    "url": "https://github.com/jimenezeljay/Honey-Tracker-Project/issues"
   },
-  "homepage": "https://github.com/jimenezeljay/Honey-Tracer-Project#readme",
+  "homepage": "https://github.com/jimenezeljay/Honey-Tracker-Project#readme",
   "dependencies": {
     "bootstrap": "^5.3.3"
   },
