@@ -1,0 +1,22 @@
+// Form tweaks on top of Bootstrap. Validation logic lives in js/forms.js.
+
+// Checkbox groups ("pick at least one"): Bootstrap would color each unticked box
+// green as "valid" because no single box is required. Keep them neutral unless
+// js/forms.js marks the group invalid.
+.was-validated [data-required-group] .form-check-input:valid:not(.is-invalid) {
+  border-color: var(--bs-border-color);
+
+  &:checked {
+    background-color: $primary;
+    border-color: $primary;
+  }
+
+  ~ .form-check-label { color: inherit; }
+}
+
+// ...and red when the group fails (Bootstrap's green "valid" rule would win otherwise)
+.was-validated [data-required-group] .form-check-input.is-invalid {
+  border-color: var(--bs-form-invalid-border-color);
+
+  ~ .form-check-label { color: var(--bs-form-invalid-color); }
+}
